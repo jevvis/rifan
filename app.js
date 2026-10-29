@@ -119,7 +119,7 @@
   };
   const pts = a => '<ul>' + a.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>';
   const work = c => c.work.map((x, i) => '<article class="g-card work r" style="--i:' + i + '"><div><p class="meta">' + esc(x.period) + '</p><h3>' + esc(x.role) + '</h3><p class="org">' + esc(x.org) + '</p>' + pts(x.points) + '</div>' +
-    '<div class="gal">' + x.imgs.map(u => '<img src="' + u + '" alt="" loading="lazy">').join('') + '</div></article>').join('');
+    '<div class="gal">' + x.imgs.map(u => '<img src="' + u + '" alt="" loading="lazy" decoding="async">').join('') + '</div></article>').join('');
   const body = {
     kerja: work,
     pendidikan: c => c.edu.map((x, i) => '<article class="g-card edu r" style="--i:' + i + '"><div><p class="meta">' + esc(x.year) + '</p><h3>' + esc(x.title) + '</h3></div></article>').join(''),
@@ -204,4 +204,7 @@
   const start = normalize(location.hash);
   if (location.hash !== start) history.replaceState(null, '', start);
   show(start);
+  // gambar seksi dimuat dan didekode lebih dulu saat browser menganggur, supaya animasi layar naik tidak tersendat
+  const warm = () => [...CONTENT.id.work.flatMap(w => w.imgs), ...CONTENT.id.certs.map(x => x.imgSrc)].forEach(u => { const im = new Image(); im.decoding = 'async'; im.src = u; if (im.decode) im.decode().catch(() => {}) })
+  ;(window.requestIdleCallback || (f => setTimeout(f, 1200)))(warm)
 })();
