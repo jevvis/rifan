@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portofolio Rifan</title>
+<meta name="theme-color" content="#05060a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-screen-now="intro">
+
+<header class="bar" id="bar">
+  <button class="bar-menu" id="barMenu" type="button" data-go="#isi" aria-label="Daftar isi"><span></span><span></span><span></span></button>
+  <div class="lang" role="group" aria-label="Bahasa">
+    <button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button>
+  </div>
+</header>
+
+<nav class="dots" id="dots" aria-label="Navigasi">
+  <button type="button" data-go="#intro" aria-label="Intro"></button>
+  <button type="button" data-go="#profil" aria-label="Profil"></button>
+  <button type="button" data-go="#isi" aria-label="Daftar isi"></button>
+</nav>
+
+<main id="stage">
+  <section class="screen" data-screen="intro" aria-label="Intro"><div class="scroll"></div></section>
+  <section class="screen" data-screen="profil" aria-label="Profil"><div class="scroll"></div></section>
+  <section class="screen" data-screen="isi" aria-label="Daftar isi"><div class="scroll"></div></section>
+  <section class="screen" data-screen="seksi" aria-label="Isi"><div class="scroll"></div></section>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-hidden="true"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
