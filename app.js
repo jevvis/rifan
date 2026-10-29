@@ -96,8 +96,7 @@
           : '<span class="glass" title="' + esc(k.value) + '">' + inner + '</span>';
       }).join('');
       const sw = c.skills.map(s => '<span class="chip">' + esc(s) + '</span>').join('');
-      const hint = matchMedia('(hover:none)').matches ? (App.lang === 'en' ? 'Touch the photo' : 'Sentuh fotonya') : (App.lang === 'en' ? 'Hover over the photo' : 'Arahkan kursor ke foto');
-      return '<div class="pf"><div class="pf-photo"><div class="ph-wrap"><img src="' + c.photo + '" alt="' + esc(c.fullName) + '"><img class="ph-alt" src="' + c.photo2 + '" alt="" aria-hidden="true"></div><span class="ph-hint">' + esc(hint) + '</span></div>' +
+      return '<div class="pf"><div class="pf-photo"><div class="ph-wrap"><img src="' + c.photo + '" alt="' + esc(c.fullName) + '"></div></div>' +
         '<div class="pf-text"><p class="eyebrow r" style="--i:0">' + esc(c.ui.hello) + '</p><h1 class="pf-name r" style="--i:1">' + esc(c.name) + '</h1>' +
         '<p class="pf-head r" style="--i:2">' + esc(c.headline) + '</p>' +
         '<div class="pf-cols"><div class="r" style="--i:3"><h2>' + esc(c.ui.about) + '</h2><p>' + esc(c.tx.aboutText) + '</p></div>' +
@@ -172,26 +171,6 @@
       }
     } else if ((e.key === 'Enter' || e.key === ' ') && App.cur === '#intro') { e.preventDefault(); App.go('#profil'); }
   });
-
-  // ───── lensa foto profil: kursor/sentuhan mengungkap foto kedua pada area lingkaran yang melebar pelan ─────
-  let lensEl = null, lcx = 0, lcy = 0, ltx = 0, lty = 0, lraf = 0;
-  const lensTick = () => {
-    lraf = 0; if (!lensEl) return;
-    lcx += (ltx - lcx) * (reduced ? 1 : .22); lcy += (lty - lcy) * (reduced ? 1 : .22);
-    lensEl.style.setProperty('--lx', lcx.toFixed(1) + 'px'); lensEl.style.setProperty('--ly', lcy.toFixed(1) + 'px');
-    if (Math.abs(ltx - lcx) + Math.abs(lty - lcy) > .5) lraf = requestAnimationFrame(lensTick);
-  };
-  const lensOff = () => { if (lensEl) lensEl.classList.remove('lens-on'); lensEl = null; };
-  document.addEventListener('pointermove', e => {
-    const w = e.target.closest ? e.target.closest('.ph-wrap') : null;
-    if (!w) { lensOff(); return; }
-    const r = w.getBoundingClientRect();
-    ltx = e.clientX - r.left; lty = e.clientY - r.top;
-    if (lensEl !== w) { lensOff(); lensEl = w; lcx = ltx; lcy = lty; w.classList.add('lens-on'); document.body.classList.add('lens-used'); }
-    if (!lraf) lraf = requestAnimationFrame(lensTick);
-  }, { passive: true });
-  document.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') setTimeout(lensOff, 700); }, { passive: true });
-  document.addEventListener('pointercancel', lensOff, { passive: true });
 
   // ───── scroll antar layar ─────
   const cur = () => scrollEl(nameOf(App.cur));

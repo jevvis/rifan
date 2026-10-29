@@ -68,14 +68,8 @@ a.glass:hover{transform:translateY(-3px);border-color:#9bb8ff;box-shadow:0 8px 2
 .pf{min-height:calc(100dvh - 76px);display:grid;grid-template-columns:minmax(260px,.85fr) 1.35fr;align-items:end;max-width:1280px;margin:0 auto;padding:0 clamp(18px,3vw,40px)}
 .pf-photo{align-self:end;position:relative;display:flex;align-items:flex-end;justify-content:center}
 .pf-photo::before{content:"";position:absolute;inset:8% -10% 0 -30%;background:radial-gradient(60% 60% at 50% 55%,rgba(52,92,255,.5),rgba(5,6,10,0) 72%)}
-@property --r{syntax:'<length>';inherits:true;initial-value:0px}
 .ph-wrap{position:relative;display:grid;width:100%;--r:0px;--lx:50%;--ly:35%;touch-action:pan-y;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent);transition:--r .7s cubic-bezier(.2,.7,.2,1)}
-.ph-wrap.lens-on{--r:190px}
 .ph-wrap img{grid-area:1/1;position:relative;width:100%;max-height:calc(100dvh - 90px);object-fit:contain;object-position:bottom;user-select:none;-webkit-user-drag:none}
-.ph-wrap img:not(.ph-alt){-webkit-mask-image:radial-gradient(circle at var(--lx) var(--ly),transparent calc(var(--r)*.62),#000 var(--r));mask-image:radial-gradient(circle at var(--lx) var(--ly),transparent calc(var(--r)*.62),#000 var(--r))}
-.ph-wrap .ph-alt{pointer-events:none;-webkit-mask-image:radial-gradient(circle at var(--lx) var(--ly),#000 calc(var(--r)*.62),transparent var(--r));mask-image:radial-gradient(circle at var(--lx) var(--ly),#000 calc(var(--r)*.62),transparent var(--r))}
-.ph-hint{position:absolute;left:6%;bottom:9%;z-index:2;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(8,12,40,.55);font-size:11px;letter-spacing:.06em;color:var(--mut);pointer-events:none;transition:opacity .5s}
-.lens-used .ph-hint{opacity:0}
 .pf-text{padding:clamp(8px,2vh,28px) 0 clamp(24px,5vh,56px) clamp(0px,2vw,28px)}
 .eyebrow{margin:0;font-size:14px;color:var(--blue2);font-weight:500;letter-spacing:.04em}
 .pf-name{margin:2px 0 6px;font-size:clamp(46px,7.4vw,100px);line-height:1;font-weight:800;letter-spacing:-.02em}
@@ -153,8 +147,6 @@ a.glass:hover{transform:translateY(-3px);border-color:#9bb8ff;box-shadow:0 8px 2
   .scroll{padding-top:68px}
   .pf{grid-template-columns:1fr;align-items:start;min-height:0}
   .ph-wrap img{max-height:44dvh}
-  .ph-wrap.lens-on{--r:130px}
-  .ph-hint{bottom:12%}
   .pf-photo::before{inset:6% -20% 0 -20%}
   .pf-text{padding:0 0 40px}
   .pf-cols{grid-template-columns:1fr}

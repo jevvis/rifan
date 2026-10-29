@@ -86,7 +86,6 @@
       name: 'Rifan', fullName: 'Rifan',
       headline: d.headline,
       photo: 'assets/foto-profil.png',
-      photo2: 'assets/foto-profil2.png',
       sections: IDS.map((id, i) => ({ id, num: '0' + (i + 1), label: NAV[L][i], title: SEC_TITLE[L][i] })),
       work: d.work.map(([period, role, org, imgs, points]) => ({ period, role, org, imgs, points })),
       edu: d.edu.map(([year, title]) => ({ year, title })),

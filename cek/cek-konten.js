@@ -11,7 +11,7 @@ a.filter(k => !b.has(k)).forEach(k => fail('kunci ID tanpa EN: ' + k));
 const order = ['kerja', 'pendidikan', 'sertifikasi', 'teknis', 'personal'];
 ['id', 'en'].forEach(l => { if (C[l].sections.map(s => s.id).join() !== order.join()) fail('urutan seksi ' + l); });
 const ex = p => fs.existsSync(path.join(root, p));
-[...C.id.work.flatMap(w => w.imgs), ...C.id.certs.map(c => c.imgSrc), C.id.photo, C.id.photo2].forEach(p => { if (!ex(p)) fail('gambar tidak ada: ' + p); });
+[...C.id.work.flatMap(w => w.imgs), ...C.id.certs.map(c => c.imgSrc), C.id.photo].forEach(p => { if (!ex(p)) fail('gambar tidak ada: ' + p); });
 // jumlah butir sesuai CV
 const n = (x, k, v) => { if (x !== v) fail(k + ' = ' + x + ', seharusnya ' + v); };
 n(C.id.work.length, 'pengalaman kerja', 2); n(C.id.work[0].points.length, 'butir AHB', 3); n(C.id.work[1].points.length, 'butir Rimba', 2);
